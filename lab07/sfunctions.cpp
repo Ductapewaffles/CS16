@@ -9,3 +9,11 @@ using namespace std;
 
 // DEFINE ALL 5 FUNCTIONS PER THE sheaders.h FILE HERE
 // Add Pre- and Post-Condition comments
+
+int find_index_of_swap(bool desc, int a[], int start_index, int number_used){
+    //Preconditions: Takes in a boolean which if true, makes the swapping go in the descending direction
+    //and if false sorts in the ascending direction. Also takes in an integer array that has all
+    //the values that need to be sorted, and integer for the starting index, and an integer for the numbers used
+    //which should be incremented outside of this function for optimal performance
+    //Postconditions: Looks for the index of the largest (or smallest depending on the boolean value for desc) integer value within the array and returns that index.:
+}
