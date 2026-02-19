@@ -1,15 +1,8 @@
-// File: sfunctions.cpp
 #include <iostream>
-#include <fstream>
-#include <string>
 #include <cstdlib>
+#include <fstream>
 using namespace std;
 
-#include "sheaders.h"
-
-
-// DEFINE ALL 5 FUNCTIONS PER THE sheaders.h FILE HERE
-// Add Pre- and Post-Condition comments
 
 int find_index_of_swap(bool desc, int a[], int start_index, int number_used){
     //Preconditions: Takes in a boolean which if true, makes the swapping go in the descending direction
@@ -45,6 +38,7 @@ int find_index_of_swap(bool desc, int a[], int start_index, int number_used){
     return index;
 }
 
+
 void swap_values(int &val1, int &val2){
     //Preconditions: Takes in two integers which are passed by reference
     //Postconditions: Switches the values at the respective addresses so that their values have been swapped
@@ -54,13 +48,8 @@ void swap_values(int &val1, int &val2){
     val1 = temp;
     return;
 }
-
 void sort(bool desc, int a[], int number_used, int index){
-    //Preconditions: Takes in a boolean value to determine if sorting in descending (true), an integer array,
-    //the amount of numbers that we want to use within the array, and the starting index for the sorting (should
-    //be 0 for pretty much all cases)
-    //Postconditions: Sorts the array in descending or ascending order based on the value of the boolean desc variable.
-    //True if you want descending and false if you want ascending
+    index = 0;
     if(number_used <= 1){
         return;
     }
@@ -96,8 +85,6 @@ int getFileSize(ifstream &object, string file_name){
 }
 
 void getArray(ifstream &object, string file_name, int arr[], int array_size){
-    //Preconditions: Takes in the ifstream object, the filename that we are pulling from, an integer array, and the size of that array
-    //Postconditions: Gets all values from the file and puts them into the array given
     object.open(file_name);
     int next;
     int index_array(0);
@@ -110,3 +97,36 @@ void getArray(ifstream &object, string file_name, int arr[], int array_size){
 }
 
 
+
+
+
+int main(){
+    typedef int* IntegerPtr;
+    IntegerPtr p1 = nullptr;
+    ifstream inFile;
+    string array_file;
+    cout << "Enter a filename: ";
+    cin >> array_file;
+    int file_size = getFileSize(inFile, array_file);
+    p1 = new int[file_size];
+    getArray(inFile, array_file, p1, file_size);
+    for(int i = 0; i < file_size; i++){
+        cout << p1[i] << " ";
+    }
+    //cout << endl;
+    //cout << find_index_of_swap(false, array, 0, 8) << endl;
+    //cout << find_index_of_swap(true, array, 0, 8) << endl;
+    int value1 = 7;
+    int value2 = 10;
+    //swap_values(value1, value2);
+    //cout << value1 << " should be 10" << endl;
+   // cout << value2 << " should be 7" << endl;
+    //sort(false, array, 8, 0);
+    //for(int i = 0; i < 8; i++){
+    //    cout << array[i] << " ";
+    //}
+   // cout << endl;
+    delete []p1;
+    p1 = nullptr;
+    return 0;
+}
