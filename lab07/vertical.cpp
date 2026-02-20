@@ -18,7 +18,7 @@ int main() {
     cout << "Enter integer: ";//user prompt
     cin >> value; //user input
     if(value < 0){ //if the value is negative, then throw an error
-        cerr << "Input must be a positive integer.\n";
+        cout << "Input must be a positive integer.";
         return 0;
     }
     printV(value); //recursively print verticall all numbers at each digit place

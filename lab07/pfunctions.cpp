@@ -9,36 +9,16 @@ using namespace std;
 // Add Pre- and Post-Condition comments
 
 
-bool isPalindrome(string s) {
-    //Preconditions: takes in a string that has been cleaned
-    //Postconditions: Returns true if the string is a palindrome and false otherwise. Recursively calls itself
-    if(s == ""){ //if the string is empty, then return true (means that it is a palindrome
-        return true;
+bool isPalindrome(string s){
+    if (s.size() <= 1){ //sees if the updates size is less than or equal to 1, which means that all other letters are the same on opposite sides of the word (palindrome)
+        return true; //if so return true (this is the base case)
     }
-    int size1 = s.size(); //update size1 value
-    if(size1 % 2 != 0){ //this is for strings who have an odd number of characters
-        if(s[0] == s[size1 - 1]){ //if the first and last element are equal
-            s.erase(0, 1); //delete first element
-            s.erase(s.size() - 1, 1); //delete last element
-            if(s.size() == 1){ //if the size is 1, meaning there should only be the middle character remaining after all other have been compared, then return true
-                return true;
-            }
-            return isPalindrome(s); //otherwise, recursively call the isPalindrome() function
-        }
-        return false; //if one of the first and last indices is not the same, then return false
+    if(s[0] != s[s.size() - 1]){ //if the first index does not equal the last index
+        return false; //return false (not the same letters on either sides of the word
     }
-    else if(size1 % 2 == 0){ //if the number of characters is even within the cleaned string
-        if(s[0] == s[size1 - 1]){ //if the first and last element are the same
-            s.erase(0,1); //delete first char
-            s.erase(s.size() - 1, 1); //delete last char
-            if(s.size() == 0){ //if the size is zero (which means all chars have been successfully deleted, then return true
-                return true;
-            }
-            return isPalindrome(s); //recursively call again if this is not the case
-        }
-        return false; //return false if the first and last index chars are not the same for any given iteration 
-    }
-    return false;
+    s.erase(0,1); //erase the first index
+    s.erase(s.size() - 1, 1); //erase the updated last index
+    return isPalindrome(s); //recursively call the function again
 }
 
 void cleanUp(string &s) {
