@@ -3,7 +3,7 @@
 // Define the functions, per the list in r_headers.h
 const string OUTPUTFILE = "Results.txt";
 
-void NameSort(UndergradStudents array[], int size);
+void NameSort(UndergradStudents array[], int size){
     //Preconditions: Takes in an array of type UndergradStudents and the size of that array
     //Postconditions: Sorts elements of the array according to the alphabetical order of the last member function's variable within each element
     for(int i = size - 1; i >= 0; i--){
@@ -17,8 +17,12 @@ void NameSort(UndergradStudents array[], int size);
             }
         }
     }
+}
 void InitializeStructures(UndergradStudents us[], int &size){
     int count(0);
+    int id_num(0);
+    cout << showpoint;
+    cout << setprecision(2);
     for(int i = 0; i < 20; i++){
         string first;
         if(i != 0){
@@ -30,6 +34,7 @@ void InitializeStructures(UndergradStudents us[], int &size){
             break;
         }
         count++;
+        id_num++;
         us[i].first = first;
         string last, major;
         float GPA1, GPA2, GPA3, GPA4;
@@ -47,15 +52,30 @@ void InitializeStructures(UndergradStudents us[], int &size){
         cin >> GPA4;
         us[i].last = last;
         us[i].major = major;
-        us[i].GPA_1 = GPA1;
-        us[i].GPA_2 = GPA2;
-        us[i].GPA_3 = GPA3;
-        us[i].GPA_4 = GPA4;
+        double average = (GPA1 + GPA2 + GPA3 + GPA4) / 4;
+        us[i].GPA_avg = average;
+        us[i].ID_num = id_num;
     }
     size = count;
 }
    
-void WriteResults(ofstream &outf, UndergradStudents us[], int size);
-
+void WriteResults(ofstream &outf, UndergradStudents us[], int size){
+    outf.open(OUTPUTFILE);
+    if(outf.fail()){
+        cerr << "Failed to open output file";
+        exit(1);
+    }
+    outf << "These are the results sorted by last name:\n";
+    NameSort(us, size);
+    for(int i = 0; i < size; i++){
+        outf << "ID #" << us[i].ID_num << ": ";
+        outf << us[i].last << ": ";
+        outf << us[i].first << ": ";
+        outf << us[i].major << ": ";
+        outf << us[i].GPA_avg << endl;
+    }
+    outf.close();
+    return;
+}
 
 
