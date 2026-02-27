@@ -7,8 +7,5 @@ struct UndergradStudents{
     string first;
     string last;
     string major;
-    float GPA_1;
-    float GPA_2;
-    float GPA_3;
-    float GPA_4;
+    double GPA_avg;
 };
