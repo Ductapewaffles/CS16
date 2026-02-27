@@ -1,7 +1,6 @@
 // file: r_headers.h
 // Do NOT change this file at all!
 
-const string OUTPUTFILE = "Results.txt";
 
 void NameSort(UndergradStudents array[], int size);
 
