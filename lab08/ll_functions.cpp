@@ -63,7 +63,7 @@ void printLL(LinkNodePtr h){
     }
 }
 
-void insertNodeAfter(LinkNodePtr& h) {
+void insertNodeAfter(LinkNodePtr h) {
     //Preconditions: Takes in the head pointer by reference
     //Postconditions: Inserts a node with given information after the specified position
     if(h == nullptr){ //if the list is empty (h points to nothing)

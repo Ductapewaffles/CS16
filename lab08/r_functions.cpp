@@ -1,7 +1,7 @@
 // file: r_functions.cpp
 // YOUR NAME HERE
 // Define the functions, per the list in r_headers.h
-const string OUTPUTFILE = "Results.txt";
+
 
 void NameSort(UndergradStudents array[], int size){
     //Preconditions: Takes in an array of type UndergradStudents and the size of that array
